@@ -2,13 +2,57 @@ import './Menu.less'
 
 // This is the data we will be using, study it but don't change anything, yet.
 let menuItems = [
-  'Students',
-  'Faculty',
-  "What's New",
-  'Tech Trends',
-  'Music',
-  'Log Out'
+    'Students',
+    'Faculty',
+    "What's New",
+    'Tech Trends',
+    'Music',
+    'Log Out'
 ];
+
+
+function menuMaker(linksArray) {
+    const menuElem = document.createElement("div");
+    const listElem = document.createElement("ul");
+
+    menuElem.appendChild(listElem);
+
+    menuElem.classList.add("menu")
+
+    linksArray.forEach(linkText => {
+        const link = document.createElement("li");
+        link.textContent = linkText;
+        menuElem.appendChild(link);
+    })
+
+    const hamMenu = document.querySelector(".menu-button");
+
+    hamMenu.addEventListener("click", () => {
+        menuElem.classList.toggle("menu--open");
+
+    })
+    return menuElem;
+
+}
+
+console.log(menuMaker(menuItems));
+
+
+
+document.querySelector(".header").appendChild(menuMaker(menuItems));
+
+
+
+
+/*
+    example of hour you can do the above
+
+const newMenu = menuMaker(menuItems);
+const headerElem = document.querySelector(".header");
+headerElem.appendChild(newMenu);
+
+*/
+
 
 /*
   Step 1: Write a component called 'menuMaker' to create a menu like the markup below:
